@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orderstore
+spec:
+  selector:
+    matchLabels:
+      app: orderstore
+  template:
+    metadata:
+      labels:
+        app: orderstore
+    spec:
+      containers:
+        - name: orderstore
+          image: orderstore
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+          ports:
+            - containerPort: 3000
